@@ -71,7 +71,7 @@ public class MysqlProcess extends MysqlProcessBase{
 
     @Test(description = "consola field basliklari ile datalarini for(int i=1;...)  ile yazdirin")
     public void test5() throws SQLException {
-        String sql = "SELECT * FROM actor;";
+        String sql = "SELECT * FROM personel LIMIT 20;";
         rs = statement.executeQuery(sql);
         ResultSetMetaData rsmd = rs.getMetaData();
         int rowNum = rsmd.getColumnCount();
@@ -83,9 +83,11 @@ public class MysqlProcess extends MysqlProcessBase{
             size = Math.max(size, rsmd.getColumnName(i).length());
             format +="%-" + size + "s";
             headers[i-1] = rsmd.getColumnName(i);
+            System.out.println(rsmd.getColumnDisplaySize(i));
         }
         format +="\n";
         System.out.printf(format, headers);
+
 
         String[] values = new String[rowNum];
         while (rs.next()){
