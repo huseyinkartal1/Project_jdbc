@@ -14,9 +14,6 @@ public class Kartal {
     @Test
     public void test() throws SQLException {
 
-
-
-
         String sql="SELECT * FROM kartal";
         String sql2="DELETE FROM kartal WHERE Adı IS NULL";
         String sql3="DELETE FROM kartal WHERE Soyadı IS NULL";
