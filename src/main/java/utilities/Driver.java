@@ -17,9 +17,11 @@ public class Driver {
 
             WebDriverManager.chromedriver().setup();
             driver=new ChromeDriver();
+            driver.manage().window().maximize();
 
             //create edilmesine kadar bekler
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
 
             //explicityWait visible/clickable olmasını bekler
 

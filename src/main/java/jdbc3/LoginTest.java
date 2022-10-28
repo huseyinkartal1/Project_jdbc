@@ -1,8 +1,10 @@
 package jdbc3;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utilities.ConnectionManager;
@@ -11,6 +13,7 @@ import utilities.Driver;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.time.Instant;
 import java.util.Arrays;
 
 public class LoginTest {
@@ -25,7 +28,7 @@ public class LoginTest {
     }
 
     @Test(dataProvider = "getData", priority = 2)
-    public void loginTest(Object[] arr) {
+    public void loginTest(Object[] arr) throws InterruptedException {
 
         System.out.println(Arrays.toString(arr));
 
@@ -36,6 +39,17 @@ public class LoginTest {
         WebElement password = driver.findElement(By.xpath("//*[@id=\"password\"]"));
         password.clear();
         password.sendKeys(arr[1].toString());
+
+        int num= Integer.parseInt(arr[2].toString());
+        if(num!=0){
+            WebElement loginButton = driver.findElement(By.xpath("//*[@id=\"login-button\"]"));
+            loginButton.click();
+            WebElement menu = driver.findElement(By.xpath("//*[@id=\"react-burger-menu-btn\"]"));
+            menu.click();
+            WebElement logout = driver.findElement(By.xpath("//*[@id=\"logout_sidebar_link\"]"));
+            logout.click();
+
+        }
 
     }
 
