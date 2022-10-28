@@ -11,6 +11,7 @@ public enum RDMS {
 
 
     RDMS(int a, String s) {
+
         this.a = a;
         this.s = s;
     }
